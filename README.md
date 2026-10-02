@@ -21,3 +21,5 @@
 جهز حسابَي GitHub وGoogle، ثم ابدأ [دفتر الاستعداد](https://colab.research.google.com/github/almiyead-rgb/sda-dsc-211-student-template/blob/main/notebooks/00_readiness_check.ipynb) واتبع [دليل الاستعداد](https://github.com/almiyead-rgb/sda-dsc-211-student-template/blob/main/READINESS_GUIDE.md). ستتاح تطبيقات الأيام الخمسة مع أيام الدورة. لا تنشر بياناتك الشخصية أو كلمات المرور أو درجتك في الملفات العامة؛ تعلن المدربة قناة التسليم الخاصة.
 
 Prepared and delivered by **ميعاد المري | Meaad Al-Marri** · [حقوق النسبة](NOTICE.md) · [SDAIA Academy GitHub](https://github.com/SDAIAAcademy).
+
+**تطبيق اليوم الأول متاح:** [افتح مختبر خط الأساس والتعزيز](https://colab.research.google.com/github/almiyead-rgb/sda-dsc-211-student-template/blob/main/notebooks/01_baseline_boosting.ipynb) · [دليل التطبيق](https://github.com/almiyead-rgb/sda-dsc-211-student-template/blob/main/DAY1_GUIDE.md). قارن ثلاثة نماذج ثم اكتب قرارك من أدلتك.
