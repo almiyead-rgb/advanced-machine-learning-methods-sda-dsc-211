@@ -27,3 +27,5 @@ Prepared and delivered by **ميعاد المري | Meaad Al-Marri** · [حقو�
 **تطبيق اليوم الثاني متاح:** [افتح مختبر التحقق الصادق](https://colab.research.google.com/github/almiyead-rgb/sda-dsc-211-student-template/blob/main/notebooks/02_validation_tuning.ipynb) · [دليل التطبيق](https://github.com/almiyead-rgb/sda-dsc-211-student-template/blob/main/DAY2_GUIDE.md). اكشف التسرب وافصل الزمن والعملاء، ثم فسّر نتائج البحث المحدود.
 
 **تطبيق اليوم الثالث متاح:** [افتح مختبر العتبة والخسارة](https://colab.research.google.com/github/almiyead-rgb/sda-dsc-211-student-template/blob/main/notebooks/03_cost_sensitive_decision.ipynb) · [دليل التطبيق](https://github.com/almiyead-rgb/sda-dsc-211-student-template/blob/main/DAY3_GUIDE.md). قارن عدم التوازن واختر قرارًا يراعي سعة المراجعة، ثم اكتب بطاقة من أدلتك.
+
+**تطبيق اليوم الرابع متاح:** [افتح مختبر التفسير والمعايرة](https://colab.research.google.com/github/almiyead-rgb/sda-dsc-211-student-template/blob/main/notebooks/04_explain_calibrate.ipynb) · [دليل التطبيق](https://github.com/almiyead-rgb/sda-dsc-211-student-template/blob/main/DAY4_GUIDE.md). فسّر درجات النموذج، وافحص الاحتمالات والاستقرار وسعة المراجعة على بيانات منفصلة.
