@@ -19,10 +19,20 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('.upgrade/payload.part-000')
+          data = bytearray(path.read_bytes())
+          assert len(data) == 18000
+          assert data[16189] == ord('/')
+          data[16189] = ord('v')
+          path.write_bytes(data)
+          PY
           cat .upgrade/payload.part-* | base64 --decode > /tmp/bilingual-upgrade.tar.gz
           tar -xzf /tmp/bilingual-upgrade.tar.gz -C .
           rm -rf .upgrade
           rm -f .github/workflows/apply_upgrade.yml
+          rm -f .github/workflows/inspect_payload.yml
           rm -f .github/workflows/export_source.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
