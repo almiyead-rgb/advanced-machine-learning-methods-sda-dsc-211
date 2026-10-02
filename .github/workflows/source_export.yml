@@ -13,8 +13,7 @@ jobs:
       - name: Package portal source
         run: |
           mkdir -p source-export
-          cp -R . source-export/repository
-          rm -rf source-export/repository/.git source-export/repository/source-export
+          find . -maxdepth 1 -type f -exec cp {} source-export/ \;
       - uses: actions/upload-artifact@v4
         with:
           name: bilingual-portal-source
