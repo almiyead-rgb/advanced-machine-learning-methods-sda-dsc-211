@@ -22,3 +22,5 @@
 
 Prepared and delivered by **ميعاد المري | Meaad Al-Marri** · [حقوق النسبة](NOTICE.md) · [SDAIA Academy GitHub](https://github.com/SDAIAAcademy).
 
+
+افحص مشروعك قبل التسليم: [دفتر99](https://colab.research.google.com/github/almiyead-rgb/sda-dsc-211-student-template/blob/main/notebooks/99_final_submission_check.ipynb) · [دليل الفحص](https://github.com/almiyead-rgb/sda-dsc-211-student-template/blob/main/FINAL_CHECK_GUIDE.md). الجاهزية التقنية ليست درجة أو إيصالًا؛ تعلن المدربة قناة الاستلام الخاصة والموعد.
