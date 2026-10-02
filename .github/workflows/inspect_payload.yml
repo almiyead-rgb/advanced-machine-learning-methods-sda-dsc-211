@@ -1,0 +1,24 @@
+name: Inspect Upgrade Payload
+on:
+  push:
+    branches:
+      - feature/bilingual-learning-experience-v1.1
+    paths:
+      - '.github/workflows/inspect_payload.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          persist-credentials: false
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: staged-upgrade-payload
+          path: .upgrade
+          include-hidden-files: true
+          retention-days: 1
