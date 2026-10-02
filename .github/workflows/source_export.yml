@@ -1,0 +1,22 @@
+name: Source Export
+on:
+  push:
+    branches: [bilingual-side-by-side-v2]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Package portal source
+        run: |
+          mkdir -p source-export
+          cp -R . source-export/repository
+          rm -rf source-export/repository/.git source-export/repository/source-export
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bilingual-portal-source
+          path: source-export
+          retention-days: 1
