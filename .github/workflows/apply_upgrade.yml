@@ -1,0 +1,31 @@
+name: Apply Bilingual Upgrade
+on:
+  push:
+    branches:
+      - feature/bilingual-learning-experience-v1.1
+    paths:
+      - '.upgrade/READY'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          fetch-depth: 0
+      - name: Apply reviewed payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .upgrade/payload.part-* | base64 --decode > /tmp/bilingual-upgrade.tar.gz
+          tar -xzf /tmp/bilingual-upgrade.tar.gz -C .
+          rm -rf .upgrade
+          rm -f .github/workflows/apply_upgrade.yml
+          rm -f .github/workflows/export_source.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "feat: publish bilingual course experience v1.1"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
