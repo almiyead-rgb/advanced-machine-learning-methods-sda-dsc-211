@@ -18,6 +18,6 @@
 
 التقييم من100: **90** للمتطلبات التقنية والإدارية و**10** للعرض. النجاح من**70** والتميز من**95**. وحدات خسارة النموذج وسيلة تعلم ولا تعني رسومًا أو خصمًا مباشرًا من درجتك.
 
-جهز حسابَي GitHub وGoogle، ثم اقرأ دليل البداية في القالب. ستتاح روابط التطبيقات مع أيام الدورة. لا تنشر بياناتك الشخصية أو كلمات المرور أو درجتك في الملفات العامة؛ تعلن المدربة قناة التسليم الخاصة.
+جهز حسابَي GitHub وGoogle، ثم ابدأ [دفتر الاستعداد](https://colab.research.google.com/github/almiyead-rgb/sda-dsc-211-student-template/blob/main/notebooks/00_readiness_check.ipynb) واتبع [دليل الاستعداد](https://github.com/almiyead-rgb/sda-dsc-211-student-template/blob/main/READINESS_GUIDE.md). ستتاح تطبيقات الأيام الخمسة مع أيام الدورة. لا تنشر بياناتك الشخصية أو كلمات المرور أو درجتك في الملفات العامة؛ تعلن المدربة قناة التسليم الخاصة.
 
 Prepared and delivered by **ميعاد المري | Meaad Al-Marri** · [حقوق النسبة](NOTICE.md) · [SDAIA Academy GitHub](https://github.com/SDAIAAcademy).
