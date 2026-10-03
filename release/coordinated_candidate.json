@@ -30,6 +30,7 @@
     "private_controls_exposed": false,
     "submission_route": "private cohort channel"
   },
+  "verification_context": "Unified bilingual student gateway with all learner-facing resources accessible from one portal.",
   "manual_gates": [
     "HOSTED_COLAB_ACCEPTANCE",
     "HOSTED_BROWSER_AND_ACCESSIBILITY_QA",
