@@ -2,8 +2,8 @@
   "schema_version": 1,
   "release_version": "v1.1.0",
   "repository": "almiyead-rgb/advanced-machine-learning-methods-sda-dsc-211",
-  "file_count": 17,
-  "aggregate_sha256": "e6e8e85e9c3f0cedb7c1e07392190d4405ad9b2cef3492f148c86e5b362af329",
+  "file_count": 19,
+  "aggregate_sha256": "6bad2a8f253eff07b9821921a24bc3aa351b69f9b52e95df40a287488132c589",
   "files": [
     {
       "path": ".github/workflows/portal_quality.yml",
@@ -56,6 +56,16 @@
       "sha256": "176148cb0967411452c73bcf5e51dcbc430b0ef01280378b5f7e6b8b158ab07c"
     },
     {
+      "path": "content/course_metadata.yml",
+      "bytes": 3734,
+      "sha256": "b481b89d7b4ebc76d6ec700134b4599918ba1b5efde8490c6ca7134ac98ef353"
+    },
+    {
+      "path": "content/terminology.yml",
+      "bytes": 6120,
+      "sha256": "1c7e12668590d62a20c2fdda0d4369b0fe858fd94304fb36b39a9d368c3c5597"
+    },
+    {
       "path": "docs/BILINGUAL_STYLE_GUIDE.md",
       "bytes": 5391,
       "sha256": "4658d6525aa86585f27dfe0875538be72a37aff49ce9ab61aea0abe33fe0404d"
@@ -77,8 +87,8 @@
     },
     {
       "path": "scripts/build_portal_release_manifest.py",
-      "bytes": 3282,
-      "sha256": "2df560bc393a1a6d44108ca684560d95146bef7513aad6c5ab72415006cb65d3"
+      "bytes": 3542,
+      "sha256": "0e8821aef64f8a52eccdd7f5844eb89171c7d4d68c19e2239d698ea946f3d69b"
     },
     {
       "path": "scripts/check_portal.py",
