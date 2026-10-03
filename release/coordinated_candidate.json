@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "release_version": "v1.1.0",
+  "status": "CANDIDATE_NOT_RELEASED",
+  "portal": {
+    "repository": "almiyead-rgb/advanced-machine-learning-methods-sda-dsc-211",
+    "branch": "develop/bilingual-v1.1.0",
+    "manifest_path": "release/portal_release_manifest.candidate.json",
+    "file_count": 17,
+    "aggregate_sha256": "e6e8e85e9c3f0cedb7c1e07392190d4405ad9b2cef3492f148c86e5b362af329"
+  },
+  "learner_template": {
+    "repository": "almiyead-rgb/sda-dsc-211-student-template",
+    "branch": "develop/bilingual-v1.1.0",
+    "manifest_path": "release/release_manifest.candidate.json",
+    "file_count": 35,
+    "aggregate_sha256": "b4a6c05eca0b1b7716a97c89d2c80b5a63052ace9892ea8b625e696d18a5a53b"
+  },
+  "manual_gates": [
+    "HOSTED_COLAB_ACCEPTANCE",
+    "HOSTED_BROWSER_AND_ACCESSIBILITY_QA",
+    "PRIVATE_EVALUATOR_TEST",
+    "PRIVATE_SUBMISSION_REGISTRY_TEST",
+    "FINAL_CONTENT_FREEZE",
+    "FINAL_MANIFEST_GENERATION",
+    "COORDINATED_MERGE_AND_PUBLICATION"
+  ],
+  "notes": "The candidate manifests identify learner-facing release content. Operational coordination files are intentionally outside those manifest scopes. Final tags and exact merge commit SHAs are recorded only after all manual and private gates pass."
+}
