@@ -1,4 +1,5 @@
-"""Validate the unified bilingual production portal with Python standard library only."""
+# -*- coding: utf-8 -*-
+"""Validate the premium bilingual production portal using the Python standard library."""
 from __future__ import annotations
 
 import argparse
@@ -13,10 +14,12 @@ class PortalParser(HTMLParser):
         super().__init__()
         self.ids: set[str] = set()
         self.links: list[str] = []
-        self.lang_dirs: list[tuple[str | None, str | None]] = []
+        self.images: list[str] = []
+        self.stylesheets: list[str] = []
         self.canonical = False
         self.hreflangs: set[str] = set()
         self.json_ld = False
+        self.lang_dirs: list[tuple[str | None, str | None]] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = dict(attrs)
@@ -24,26 +27,27 @@ class PortalParser(HTMLParser):
             self.ids.add(values["id"] or "")
         if tag == "a" and values.get("href"):
             self.links.append(values["href"] or "")
-        if tag in {"article", "div", "td"} and (values.get("lang") or values.get("dir")):
-            self.lang_dirs.append((values.get("lang"), values.get("dir")))
+        if tag == "img" and values.get("src"):
+            self.images.append(values["src"] or "")
+        if tag == "link" and values.get("rel") == "stylesheet" and values.get("href"):
+            self.stylesheets.append(values["href"] or "")
         if tag == "link" and values.get("rel") == "canonical":
             self.canonical = True
         if tag == "link" and values.get("hreflang"):
             self.hreflangs.add(values.get("hreflang") or "")
         if tag == "script" and values.get("type") == "application/ld+json":
             self.json_ld = True
+        if tag in {"article", "div", "section"} and (values.get("lang") or values.get("dir")):
+            self.lang_dirs.append((values.get("lang"), values.get("dir")))
 
 
 def local_target(root: Path, href: str) -> Path | None:
     if not href or href.startswith(("#", "mailto:", "tel:")):
         return None
     parsed = urlparse(href)
-    if parsed.scheme or parsed.netloc:
+    if parsed.scheme or parsed.netloc or not parsed.path:
         return None
-    clean = parsed.path
-    if not clean:
-        return None
-    return (root / clean).resolve()
+    return (root / parsed.path).resolve()
 
 
 def main() -> int:
@@ -51,73 +55,69 @@ def main() -> int:
     parser.add_argument("--root", type=Path, default=Path.cwd())
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-
     root = args.root.resolve()
     index = root / "index.html"
-    base_css = root / "bilingual-v1.1.css"
-    hub_css = root / "student-hub.css"
-    arabic_legacy = root / "ar.html"
-    english_legacy = root / "en.html"
+    stylesheet = root / "student-hub.css"
     issues: list[str] = []
-
-    if not index.is_file():
-        issues.append("index.html is missing")
-        html = ""
-    else:
-        html = index.read_text(encoding="utf-8")
-    if not base_css.is_file():
-        issues.append("bilingual-v1.1.css is missing")
-    if not hub_css.is_file():
-        issues.append("student-hub.css is missing")
+    html = index.read_text(encoding="utf-8") if index.is_file() else ""
+    css = stylesheet.read_text(encoding="utf-8") if stylesheet.is_file() else ""
+    if not html:
+        issues.append("index.html is missing or empty")
+    if not css:
+        issues.append("student-hub.css is missing or empty")
 
     portal = PortalParser()
-    if html:
-        portal.feed(html)
-
-    required_ids = {
-        "main", "overview", "start", "journey", "project", "requirements",
-        "assessment", "submission", "support",
-    }
+    portal.feed(html)
+    required_ids = {"main","overview","start","journey","project","requirements","assessment","submission","support","architecture"}
     missing_ids = sorted(required_ids - portal.ids)
     if missing_ids:
         issues.append(f"Missing required section ids: {missing_ids}")
 
-    for stylesheet in ("bilingual-v1.1.css", "student-hub.css"):
-        if f'href="{stylesheet}"' not in html:
-            issues.append(f"index.html does not reference {stylesheet}")
+    for relative in ["assets/meaad-logo.png", "student-hub.css"]:
+        if not (root / relative).is_file():
+            issues.append(f"Required portal asset is missing: {relative}")
+
+    required_signals = [
+        "Advanced Machine Learning Methods",
+        "System Architecture",
+        "SDA-DSC-211",
+        "90",
+        "10",
+        "99_final_submission_check.ipynb",
+        "Submit privately",
+        "Meaad Al-Marri",
+    ]
+    lower_html = html.lower()
+    for signal in required_signals:
+        if signal.lower() not in lower_html:
+            issues.append(f"Required portal signal is missing: {signal}")
+
+    if "assets/meaad-logo.png" not in portal.images:
+        issues.append("The supplied MEAAD logo is not used in the page")
+    if "student-hub.css" not in portal.stylesheets:
+        issues.append("The production stylesheet is not linked")
     if 'dir="ltr"' not in html or 'dir="rtl"' not in html:
-        issues.append("Explicit LTR and RTL columns are required")
-    if "Everything you need" not in html or "كل ما تحتاجه" not in html:
-        issues.append("Unified student-hub heading is missing")
-    if "Student template" not in html or "قالب مشروع المتدرب" not in html:
-        issues.append("Bilingual student-template entry is missing")
+        issues.append("Explicit LTR and RTL content is required")
     if not portal.canonical:
         issues.append("Canonical link is missing")
     if not {"ar", "en"}.issubset(portal.hreflangs):
         issues.append("Arabic and English hreflang links are required")
     if not portal.json_ld:
         issues.append("Course JSON-LD is missing")
-    if "not an official SDAIA account" not in html or "ليست حسابًا رسميًا لسدايا" not in html:
-        issues.append("The bilingual non-official SDAIA disclaimer is missing")
-    base_css_text = base_css.read_text(encoding="utf-8") if base_css.is_file() else ""
-    if "prefers-reduced-motion" not in base_css_text:
-        issues.append("Reduced-motion support is missing from base CSS")
-
-    for redirect in (arabic_legacy, english_legacy):
-        if not redirect.is_file():
-            issues.append(f"Legacy portal route missing: {redirect.name}")
-            continue
-        redirect_text = redirect.read_text(encoding="utf-8")
-        if "url=./" not in redirect_text or "window.location.replace('./')" not in redirect_text:
-            issues.append(f"Legacy route does not redirect to unified portal: {redirect.name}")
+    if "not an official SDAIA account" not in html:
+        issues.append("The non-official SDAIA disclaimer is missing")
+    if "prefers-reduced-motion" not in css:
+        issues.append("Reduced-motion support is missing")
+    if "@media(max-width" not in css.replace(" ", ""):
+        issues.append("Responsive breakpoints are missing")
 
     missing_local: list[str] = []
-    for href in portal.links:
+    for href in portal.links + portal.images + portal.stylesheets:
         target = local_target(root, href)
         if target is not None and not target.exists():
             missing_local.append(href)
     if missing_local:
-        issues.append(f"Missing local link targets: {sorted(set(missing_local))}")
+        issues.append(f"Missing local targets: {sorted(set(missing_local))}")
 
     report = {
         "status": "PASS" if not issues else "FAIL",
@@ -125,15 +125,18 @@ def main() -> int:
         "required_section_ids": sorted(required_ids),
         "found_section_ids": sorted(portal.ids),
         "links_checked": len(portal.links),
+        "images_checked": len(portal.images),
+        "stylesheets_checked": len(portal.stylesheets),
         "local_missing": sorted(set(missing_local)),
         "canonical": portal.canonical,
         "hreflangs": sorted(portal.hreflangs),
         "json_ld": portal.json_ld,
         "ltr_rtl_pairs_detected": len(portal.lang_dirs),
-        "legacy_redirects": [arabic_legacy.name, english_legacy.name],
+        "logo_path": "assets/meaad-logo.png",
     }
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    output = args.output if args.output.is_absolute() else root / args.output
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0 if report["status"] == "PASS" else 1
 
