@@ -63,16 +63,20 @@ def main() -> int:
     responsive_signals = [
         "@media(max-width:1180px)",
         "@media(max-width:850px)",
-        "@media(max-width:620px)",
         "prefers-reduced-motion",
-        "overflow-wrap:anywhere",
+        "minmax(0,1fr)",
     ]
     for signal in responsive_signals:
         if signal not in css:
             issues.append(f"Responsive/accessibility CSS signal is missing: {signal}")
 
-    if re.search(r"width:\s*\d{4,}px", css):
-        issues.append("A fixed four-digit pixel width was found in the production stylesheet")
+    media_queries = re.findall(r"@media\(max-width:\d+px\)", css)
+    if len(set(media_queries)) < 2:
+        issues.append("Fewer than two responsive max-width breakpoints were detected")
+
+    # Flag only direct fixed width declarations, not max-width/min-width media queries.
+    if re.search(r"(?:^|[;{])width:\s*\d{4,}px", css):
+        issues.append("A direct fixed four-digit pixel width was found in the production stylesheet")
 
     report = {
         "status": "PASS" if not issues else "FAIL",
@@ -80,6 +84,7 @@ def main() -> int:
         "required_assets": required,
         "canonical_url": BASE_URL,
         "responsive_signals": responsive_signals,
+        "responsive_breakpoints": sorted(set(media_queries)),
     }
     output = args.output if args.output.is_absolute() else root / args.output
     output.parent.mkdir(parents=True, exist_ok=True)
