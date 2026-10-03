@@ -1,0 +1,72 @@
+schema_version: 1
+course:
+  code: SDA-DSC-211
+  version: 1.1.0-draft
+  title:
+    en: Advanced Machine Learning Methods
+    ar: أساليب تعلم الآلة المتقدمة
+  promise:
+    en: From a strong model to a trusted decision.
+    ar: من نموذج قوي إلى قرار موثوق.
+  instructor:
+    en: Meaad Al-Marri
+    ar: ميعاد المري
+    github: almiyead-rgb
+  duration:
+    contact_hours: 20
+    days: 5
+    hours_per_day: 4
+    lab_minutes_per_day: 60
+    note_en: Contact hours include scheduled prayer breaks when they occur inside the session window.
+    note_ar: تشمل ساعات الحضور فترات الصلاة المجدولة عندما تقع داخل نافذة الجلسة.
+  delivery:
+    environment: Google Colab
+    compute: Free CPU
+    paid_subscription_required: false
+    api_key_required: false
+    gpu_required: false
+  project:
+    name: Tamweel Lite
+    data_status:
+      en: Synthetic educational data
+      ar: بيانات تعليمية اصطناعية
+    decision_context:
+      en: Estimate default-event probability within 90 days and define a review policy under simulated error cost and capacity constraints.
+      ar: تقدير احتمال حدث تعثر خلال 90 يومًا وتحديد سياسة مراجعة في ظل تكلفة أخطاء تعليمية وقيد للسعة التشغيلية.
+  assessment:
+    project_points: 90
+    presentation_points: 10
+    total_points: 100
+    pass_score: 70
+    distinction_score: 95
+  attribution:
+    copyright_year: 2026
+    statement_en: Prepared and delivered by Meaad Al-Marri.
+    statement_ar: إعداد وتقديم ميعاد المري.
+    sdaia_disclaimer_en: This learning portal is not an official SDAIA account.
+    sdaia_disclaimer_ar: هذه البوابة التعليمية ليست حسابًا رسميًا لسدايا.
+learning_outcomes:
+  - id: LO1
+    en: Build high-performance tabular classifiers using XGBoost and LightGBM.
+    ar: بناء نماذج تصنيف عالية الأداء للبيانات الجدولية باستخدام XGBoost وLightGBM.
+  - id: LO2
+    en: Design validation that controls temporal, customer-group, preprocessing, and target leakage.
+    ar: تصميم تحقق يضبط التسرب الزمني وتسرب مجموعات العملاء والمعالجة المسبقة والهدف.
+  - id: LO3
+    en: Handle class imbalance and choose decisions using explicit cost and capacity constraints.
+    ar: معالجة عدم توازن الفئات واختيار القرارات وفق تكلفة صريحة وقيود السعة.
+  - id: LO4
+    en: Explain model behaviour using permutation importance and SHAP without claiming causality.
+    ar: تفسير سلوك النموذج باستخدام أهمية التبديل وSHAP دون ادعاء السببية.
+  - id: LO5
+    en: Evaluate calibration, stability, uncertainty, and operational impact.
+    ar: تقييم المعايرة والاستقرار وعدم اليقين والأثر التشغيلي.
+  - id: LO6
+    en: Conduct bounded hyperparameter optimisation with Optuna.
+    ar: تنفيذ ضبط محدود للمعاملات باستخدام Optuna.
+  - id: LO7
+    en: Compare single models, averaging, and stacking using out-of-fold evidence.
+    ar: مقارنة النماذج المفردة والمتوسطات والتكديس باستخدام أدلة خارج الطية.
+  - id: LO8
+    en: Deliver a reproducible GitHub project with a model card, decision evidence, and a concise presentation.
+    ar: تسليم مشروع GitHub قابل لإعادة الإنتاج يتضمن بطاقة نموذج وأدلة قرار وعرضًا موجزًا.
