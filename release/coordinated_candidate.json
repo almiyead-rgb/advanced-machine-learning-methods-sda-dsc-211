@@ -7,7 +7,7 @@
     "branch": "develop/bilingual-v1.1.0",
     "manifest_path": "release/portal_release_manifest.candidate.json",
     "file_count": 20,
-    "aggregate_sha256": "5fd0aaa8e972f1e49346aee0818a05ed7a7fd037a248deec7e042832d16c2cbf"
+    "aggregate_sha256": "b8c10df2cb4f9f5e8cc6d1ec13488fbd68cdc7d5184282a3fb479782edfdb291"
   },
   "learner_template": {
     "repository": "almiyead-rgb/sda-dsc-211-student-template",
