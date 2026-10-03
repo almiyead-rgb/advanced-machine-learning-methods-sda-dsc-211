@@ -6,7 +6,6 @@ import json
 from pathlib import Path
 
 NOTEBOOKS = [
-    "00_readiness_check.ipynb",
     "01_baseline_boosting.ipynb",
     "02_validation_tuning.ipynb",
     "03_cost_sensitive_decision.ipynb",
@@ -16,6 +15,7 @@ NOTEBOOKS = [
 ]
 SUPPORT = [
     "START_HERE.md",
+    "READINESS_GUIDE.md",
     "COLAB_GUIDE.md",
     "GITHUB_GUIDE.md",
     "FAQ.md",
@@ -37,6 +37,8 @@ def main() -> int:
 
     if "almiyead-rgb/sda-dsc-211-student-template" not in html:
         issues.append("Student-template repository link is missing")
+    if "00_readiness_check.ipynb" not in html and "READINESS_GUIDE.md" not in html:
+        issues.append("The portal must link directly to Notebook 00 or to the readiness guide")
     for item in NOTEBOOKS:
         if item not in html:
             issues.append(f"Missing notebook link: {item}")
@@ -57,6 +59,7 @@ def main() -> int:
     report = {
         "status": "PASS" if not issues else "FAIL",
         "issues": issues,
+        "readiness_entry": "Notebook 00 or READINESS_GUIDE.md",
         "required_notebooks": NOTEBOOKS,
         "required_support": SUPPORT,
     }
