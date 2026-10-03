@@ -76,7 +76,7 @@ def main() -> int:
     for signal in ("v1.1.0", "Notebook 99", "دفتر 99", "90", "10"):
         if signal not in notes:
             issues.append(f"Release-notes signal missing: {signal}")
-    if "private cohort channel" not in html or "القناة الخاصة" not in html:
+    if "private cohort channel" not in html.lower() or "القناة الخاصة" not in html:
         issues.append("Private submission route is not stated bilingually")
     if "not an official SDAIA account" not in html or "ليست حسابًا رسميًا لسدايا" not in html:
         issues.append("Bilingual SDAIA disclaimer is missing")
