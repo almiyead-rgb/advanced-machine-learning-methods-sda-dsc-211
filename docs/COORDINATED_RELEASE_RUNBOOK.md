@@ -10,12 +10,16 @@
 
 | Component | Repository | Manifest | File count | Aggregate SHA-256 |
 |---|---|---|---:|---|
-| Portal | `almiyead-rgb/advanced-machine-learning-methods-sda-dsc-211` | `release/portal_release_manifest.candidate.json` | 17 | `e6e8e85e9c3f0cedb7c1e07392190d4405ad9b2cef3492f148c86e5b362af329` |
-| Learner template | `almiyead-rgb/sda-dsc-211-student-template` | `release/release_manifest.candidate.json` | 35 | `b4a6c05eca0b1b7716a97c89d2c80b5a63052ace9892ea8b625e696d18a5a53b` |
+| Portal | `almiyead-rgb/advanced-machine-learning-methods-sda-dsc-211` | `release/portal_release_manifest.candidate.json` | 19 | `6bad2a8f253eff07b9821921a24bc3aa351b69f9b52e95df40a287488132c589` |
+| Learner template | `almiyead-rgb/sda-dsc-211-student-template` | `release/release_manifest.candidate.json` | 127 | `5e45aaf207fc67c605519e0fbdf8c67a9f67f5da42cc0954c0780544c3fc55c8` |
 
-These identities cover learner-facing release files only. Operational records, private evidence, final tags and final merge SHAs are tracked separately.
+The first candidate manifests exposed a release-tool defect: directory globs such as `scripts/**` and `data/**` could resolve to directories without recursively adding their files. The manifest builders now recurse explicitly through every matched directory. The corrected identities above include nested release files rather than silently omitting them.
 
-تغطي هذه الهويات ملفات الإصدار الموجهة للمتدرب فقط. تحفظ سجلات التشغيل والأدلة الخاصة والوسوم النهائية وSHA الدمج النهائية خارج هذه البصمات.
+كشفت النسخة الأولى من الـManifest خللًا في أداة الجرد؛ فقد كانت أنماط المجلدات مثل `scripts/**` و`data/**` قد تُرجع المجلد نفسه دون إضافة ملفاته الداخلية. أصبحت الأدوات الآن تتوسع داخل كل مجلد بصورة صريحة، وتمثل الهويات المصححة أعلاه الملفات المتداخلة بدل إسقاطها بصمت.
+
+These identities cover release-scoped content only. Operational records, private evidence, final tags and final merge SHAs are tracked separately.
+
+تغطي هذه الهويات الملفات الواقعة ضمن نطاق الإصدار فقط. تحفظ سجلات التشغيل والأدلة الخاصة والوسوم النهائية وSHA الدمج النهائية خارج هذه البصمات.
 
 ## Required order | الترتيب الإلزامي
 
@@ -35,6 +39,22 @@ These identities cover learner-facing release files only. Operational records, p
 14. Create the portal release tag and publish GitHub Pages.
 15. Verify all public links, Colab launches and release assets after deployment.
 16. Close the two release tracking issues only after the public verification record is complete.
+
+## Automated coordination evidence | أدلة التنسيق الآلية
+
+The workflow:
+
+```text
+Coordinated v1.1.0 Candidate Check
+```
+
+fetches both committed candidate manifests from their development branches and compares repository name, release version, file count and aggregate SHA-256 with:
+
+```text
+release/coordinated_candidate.json
+```
+
+A pass proves that the two public candidate identities agree with the coordinated record. It does not replace the manual or private gates below.
 
 ## Manual approval evidence | أدلة الاعتماد اليدوي
 
