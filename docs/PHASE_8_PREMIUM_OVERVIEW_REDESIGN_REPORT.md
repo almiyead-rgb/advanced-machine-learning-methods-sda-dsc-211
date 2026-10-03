@@ -1,35 +1,46 @@
-# Phase 8 — Premium course overview redesign
-# المرحلة 8 — �عادة تصميم الواجهة التنفيذية لدورة
+# Phase 8 — Premium Course Overview Redesign
+# المرحلة 8 — إعادة تصميم الواجهة التنفيذية للدورة
 
 ## Decision | القرار
 
-The course portal was redesigned around a clear information hierarchy rather than one dense content block. The supplied MEAAD visual identity is now placed in a dedicated square logo tile, followed by the Arabic course title and English subtitle.
+The course portal now uses a clear information hierarchy rather than one dense block. The supplied MEAAD image is placed inside a dedicated square logo tile, followed by the Arabic course name and the English subtitle.
 
-أعيد تصميم بوابة الدورة وفق تسلسل بصري واضح بدل تجميع المعلومات في كتلة واحدة. وُعت الهوية البصرية المرفقة داخل مرتع مستقل يليها اسم الدورة بالعربية والعنوان الإنجليزي.
+تعتمد البوابة الآن تسلسلاً بصريًا واضحًا بدل تجميع المحتوى في كتلة واحدة. وُضعت صورة MEAAD المرفقة داخل مربع مستقل، يليها اسم الدورة بالعربية والعنوان الإنجليزي.
 
-## Implemented UX structure | الهيكل المنفذ
+## Implemented structure | الهيكل المنفذ
 
- 1. Premium hero with the supplied logo, course name, value proposition and primary actions.
- 2. Separate course overview, five-day learning journey, outcomes and assessment panels.
- 3. Beginner start path with direct readiness, repository-template and tool-guide links.
- 4. Individual Day 1–5 cards with one Colab action and one guide action per day.
- 5. Separate project workspace for data, report templates and final presentation.
- 6. Separate requirements and assessment sections.
- 7. Separate final-submission flow and learner-support library.
- 8. System Architecture section positioned at the end of the portal.
+1. Premium hero with the supplied logo and course name.
+2. Separate course overview, five-day journey, learning outcomes and assessment panels.
+3. Beginner start path with readiness, template and tool-guide links.
+4. Individual Day 1–5 cards with direct Colab and guide actions.
+5. Separate project workspace for data, report templates and the final presentation.
+6. Separate requirements, assessment, submission and support sections.
+7. System Architecture section positioned at the end.
 
-## System architecture | معمارية النظام>
+## System architecture | معمارية النظام
 
 ```text
 Student
 → GitHub Student Repository
 → Google Colab Notebooks 01–05
-₂ Data, Models and Evidence
-₂ Notebook 99 Final Evaluation
-₂ Final Presentation and Private Submission
+→ Data, Models and Evidence
+→ Notebook 99 Final Evaluation
+→ Final Presentation and Private Submission
 ```
 
-The architecture also states the privacy boundary: hidden evaluator data, grades, identities and receipts are not exposed through the public portal.
+Hidden evaluator data, grades, identities and receipts remain outside the public portal.
 
-## Visual system | النظام البصري
-B�H�\�HܙX[K�ZY�K�X��[��\��Z[�Y��[]H\�]�Y���HH�\YYY[�]K��H�\��[��X�[ۜ��\\�]Y�H\���K���H\��]�\�HX�ܘ][ۋ��H[��\�[Y��\�X�X�\�Y�[��ܛX][ۈZ\�[�˂�H�\�ۜ�]�H[ؚ[H�X��[�˂�H�^X��\����\���\[���YX�Y[�[ۈ[��[��\ܝ��H��\��H�\��\��\��[XZ[�[��Y�HX�X��Y[�[\]N��]�]H�۝����[XZ[�[���X�܋[ۛK�����X��\[��H]�Y[��H6(�+�a6*H6)�a6`�*6b6a��Hܝ[]X[]H�ܚٛ���\�Y�Y\΂��HH�\YY���\��]\��\�[�[�\�YH\�X�X�[�[��\���\��H]\�\�H�\�[�HH\��]X�\�H�X�[ۈ^\��H[�\]Z\�Y�Y[��X�[ۜ�^\�H[��[\��]��\���NH�\�ۜ�]�H[��YX�Y[[�[ۈ���\�H�\�[�H�[�ۚX�[�Y�[����ӋS[�H�RPH\��Z[Y\��[XZ[�[�X��
+تبقى بيانات المقيم المخفية والدرجات والهويات والإيصالات خارج البوابة العامة.
+
+## Visual and UX system | النظام البصري وتجربة المستخدم
+
+- Warm cream, beige, black and restrained gold palette derived from the supplied identity.
+- Sections separated by learner purpose rather than decoration.
+- English-left and Arabic-right content pairing.
+- Responsive mobile stacking.
+- Keyboard focus, skip link, reduced motion and print support.
+- All learner resources remain connected to the public student template.
+
+## Automated acceptance | القبول الآلي
+
+The quality workflow verifies the logo, course titles, architecture section, required student sections, local assets, responsive CSS, reduced motion, canonical metadata, hreflang, JSON-LD and the SDAIA disclaimer.
