@@ -1,0 +1,92 @@
+schema_version: 1
+terms:
+  - key: baseline
+    en: Baseline
+    ar: خط الأساس
+    definition_en: A simple reference model or policy used to judge whether later complexity adds value.
+    definition_ar: نموذج أو سياسة مرجعية بسيطة يُقاس عليها ما إذا كان التعقيد اللاحق يضيف قيمة.
+  - key: boosting
+    en: Boosting
+    ar: التعزيز
+    definition_en: Sequentially adding learners so later learners focus on errors left by earlier ones.
+    definition_ar: إضافة متعلمين بالتتابع بحيث يركز اللاحق منها على الأخطاء التي تركها السابق.
+  - key: data_leakage
+    en: Data leakage
+    ar: تسرب البيانات
+    definition_en: Using information during model development that would not be available at the real decision time.
+    definition_ar: استخدام معلومات أثناء تطوير النموذج لم تكن ستكون متاحة عند لحظة القرار الفعلية.
+  - key: temporal_leakage
+    en: Temporal leakage
+    ar: التسرب الزمني
+    definition_en: Allowing future information or immature outcomes to influence an earlier prediction.
+    definition_ar: السماح لمعلومات مستقبلية أو نتائج لم يكتمل رصدها بالتأثير في تنبؤ سابق.
+  - key: group_leakage
+    en: Group leakage
+    ar: تسرب المجموعات
+    definition_en: Placing related records, such as the same customer, in both training and validation roles.
+    definition_ar: وضع سجلات مترابطة، مثل سجلات العميل نفسه، في التدريب والتحقق معًا.
+  - key: out_of_fold
+    en: Out-of-fold prediction (OOF)
+    ar: تنبؤ خارج الطية
+    definition_en: A prediction for a row produced by a model that was not trained on that row.
+    definition_ar: تنبؤ لسجل ينتجه نموذج لم يتدرب على ذلك السجل.
+  - key: average_precision
+    en: Average Precision (AP)
+    ar: متوسط الدقة
+    definition_en: A summary of precision–recall performance that is useful for imbalanced classification.
+    definition_ar: مقياس يلخص أداء الدقة والاستدعاء ويكون مفيدًا في مسائل التصنيف غير المتوازن.
+  - key: threshold
+    en: Decision threshold
+    ar: عتبة القرار
+    definition_en: The cutoff that converts a probability or score into a decision flag.
+    definition_ar: الحد الذي يحول الاحتمال أو الدرجة إلى إشارة قرار.
+  - key: simulated_decision_cost
+    en: Simulated decision cost
+    ar: تكلفة القرار التعليمية
+    definition_en: A learning metric that assigns explicit units to different error types; it is not a real financial loss or grade deduction.
+    definition_ar: مقياس تعليمي يمنح أنواع الأخطاء أوزانًا صريحة، ولا يمثل خسارة مالية فعلية أو خصمًا من الدرجة.
+  - key: calibration
+    en: Probability calibration
+    ar: معايرة الاحتمال
+    definition_en: The agreement between predicted probabilities and observed outcome frequencies.
+    definition_ar: مدى توافق الاحتمالات المتوقعة مع التكرارات الفعلية للنتائج.
+  - key: reliability_diagram
+    en: Reliability diagram
+    ar: مخطط موثوقية الاحتمالات
+    definition_en: A plot comparing average predicted probability with observed frequency in probability bins.
+    definition_ar: رسم يقارن متوسط الاحتمال المتوقع بالتكرار الفعلي داخل حاويات الاحتمال.
+  - key: permutation_importance
+    en: Permutation importance
+    ar: أهمية التبديل
+    definition_en: The performance decrease observed when a feature or feature group is shuffled.
+    definition_ar: مقدار انخفاض الأداء عند تبديل قيم خاصية أو مجموعة خصائص.
+  - key: shap
+    en: SHAP
+    ar: قيم SHAP لإسهام الخصائص
+    definition_en: Additive feature contributions that explain a model output in a defined output space; they do not prove causality.
+    definition_ar: إسهامات جمعيّة للخصائص تفسر خرج النموذج ضمن وحدة محددة، ولا تثبت السببية.
+  - key: ensemble
+    en: Ensemble
+    ar: تجميع النماذج
+    definition_en: Combining predictions from multiple models when evidence shows that diversity adds value.
+    definition_ar: دمج تنبؤات عدة نماذج عندما يثبت الدليل أن تنوعها يضيف قيمة.
+  - key: stacking
+    en: Stacking
+    ar: التكديس
+    definition_en: Training a meta-model on out-of-fold predictions from base models.
+    definition_ar: تدريب نموذج جامع على تنبؤات خارج الطية ناتجة من النماذج الأساسية.
+  - key: reproducibility
+    en: Reproducibility
+    ar: قابلية إعادة الإنتاج
+    definition_en: The ability to regenerate results from specified data, code, versions, seeds, and configuration.
+    definition_ar: القدرة على إعادة توليد النتائج من بيانات وكود وإصدارات وبذور وإعدادات محددة.
+  - key: model_card
+    en: Model Card
+    ar: بطاقة النموذج
+    definition_en: Structured documentation of intended use, data, validation, performance, limitations, and monitoring needs.
+    definition_ar: توثيق منظم للاستخدام المقصود والبيانات والتحقق والأداء والقيود واحتياجات المراقبة.
+  - key: final_commit_sha
+    en: Final commit SHA
+    ar: بصمة الالتزام النهائي
+    definition_en: The exact Git commit identifier used to freeze and evaluate the submitted version.
+    definition_ar: المعرّف الدقيق لالتزام Git المستخدم لتجميد النسخة المقدمة وتقييمها.
