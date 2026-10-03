@@ -2,8 +2,8 @@
   "schema_version": 1,
   "release_version": "v1.1.0",
   "repository": "almiyead-rgb/advanced-machine-learning-methods-sda-dsc-211",
-  "file_count": 20,
-  "aggregate_sha256": "affedf2ee446e1909920a337c91a9e4ef1da4ebc52c192205e48d39b2751fb64",
+  "file_count": 25,
+  "aggregate_sha256": "fbe073019aebf69354e5e015a3396ebe300ee5ac4cf821c9c370775c7d506aaf",
   "files": [
     {
       "path": ".github/workflows/portal_quality.yml",
@@ -14,6 +14,16 @@
       "path": ".github/workflows/portal_release_candidate.yml",
       "bytes": 2946,
       "sha256": "1d7aec9650327c8e297328bd42814abf2b0a43cc84a07bb204a1f002f09d369b"
+    },
+    {
+      "path": ".github/workflows/portal_visual_delivery_qa.yml",
+      "bytes": 3287,
+      "sha256": "474c0e82176ebe631d59d0597a68c47642fd81061c0f2995ec291f0ee7de9b16"
+    },
+    {
+      "path": "404.html",
+      "bytes": 2022,
+      "sha256": "1727617f4ae894e6cdc4601cea313fdc6c55b56def1259c7a5e35a6b196328bc"
     },
     {
       "path": "AUTHORS.md",
@@ -52,8 +62,8 @@
     },
     {
       "path": "assets/meaad-logo.png",
-      "bytes": 6110,
-      "sha256": "6a5dbf6908e593d4016e6cbf67fafcd966dbd406a62098ea4dc6c06039b3e091"
+      "bytes": 6162,
+      "sha256": "82323ee87fa0510bd5c01c631716d2e2458b79b49179de227821b016594aa9bf"
     },
     {
       "path": "content/course_metadata.yml",
@@ -86,6 +96,11 @@
       "sha256": "290893aecc7250097746f6731c73b15df1640fb7e183c1d0639a29dc0bc935b6"
     },
     {
+      "path": "robots.txt",
+      "bytes": 122,
+      "sha256": "241e00cdeccb750701e5971ed3703801cc76cb8c5c9e9f52fbf5e72a839d6a02"
+    },
+    {
       "path": "scripts/build_portal_release_manifest.py",
       "bytes": 3542,
       "sha256": "0e8821aef64f8a52eccdd7f5844eb89171c7d4d68c19e2239d698ea946f3d69b"
@@ -99,6 +114,16 @@
       "path": "scripts/check_release_coordination.py",
       "bytes": 3817,
       "sha256": "b72c23ba2d095948c724b03ffb8354b0264929527b9442afe8db2e183717f491"
+    },
+    {
+      "path": "scripts/check_web_delivery.py",
+      "bytes": 4048,
+      "sha256": "6a769bb5e5048e798a9207b2a237efda6cd27d4008d1edac21125b28d58e22c7"
+    },
+    {
+      "path": "sitemap.xml",
+      "bytes": 285,
+      "sha256": "5aee956f5950ab3486bf89fe29dc3bb4af075cabd5daf27aabf21f2904052c7d"
     },
     {
       "path": "student-hub.css",
