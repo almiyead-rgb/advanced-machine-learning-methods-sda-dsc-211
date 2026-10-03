@@ -3,7 +3,7 @@
   "release_version": "v1.1.0",
   "repository": "almiyead-rgb/advanced-machine-learning-methods-sda-dsc-211",
   "file_count": 20,
-  "aggregate_sha256": "5fd0aaa8e972f1e49346aee0818a05ed7a7fd037a248deec7e042832d16c2cbf",
+  "aggregate_sha256": "b8c10df2cb4f9f5e8cc6d1ec13488fbd68cdc7d5184282a3fb479782edfdb291",
   "files": [
     {
       "path": ".github/workflows/portal_quality.yml",
@@ -97,8 +97,8 @@
     },
     {
       "path": "scripts/check_release_coordination.py",
-      "bytes": 2825,
-      "sha256": "269752f5159375726f1171fe0d811eca270086af8d6a29c16bfcfdb4fed5ea80"
+      "bytes": 3687,
+      "sha256": "34b1f72815530728ac6e10675ebf0b5237b0032f5dbd51e3dba61062998e86bd"
     },
     {
       "path": "student-hub.css",
