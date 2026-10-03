@@ -6,6 +6,9 @@
     "index.html",
     "ar.html",
     "en.html",
+    "404.html",
+    "robots.txt",
+    "sitemap.xml",
     "student-hub.css",
     "assets/**",
     "app.js",
@@ -19,13 +22,16 @@
     "docs/CONTENT_GOVERNANCE.md",
     "scripts/check_portal.py",
     "scripts/check_release_coordination.py",
+    "scripts/check_web_delivery.py",
     "scripts/build_portal_release_manifest.py",
     ".github/workflows/portal_quality.yml",
-    ".github/workflows/portal_release_candidate.yml"
+    ".github/workflows/portal_release_candidate.yml",
+    ".github/workflows/portal_visual_delivery_qa.yml"
   ],
   "exclude": [
     "release/portal_release_manifest.json",
     "check-output/**",
+    "visual-evidence/**",
     "prototype/**",
     "**/__pycache__/**",
     "**/*.pyc"

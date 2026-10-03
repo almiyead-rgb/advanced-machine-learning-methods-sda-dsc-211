@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://almiyead-rgb.github.io/advanced-machine-learning-methods-sda-dsc-211/sitemap.xml
