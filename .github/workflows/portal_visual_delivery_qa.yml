@@ -1,0 +1,82 @@
+name: Portal Visual and Delivery QA
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, chore/portal-qa-seo]
+    paths:
+      - 'index.html'
+      - 'student-hub.css'
+      - 'assets/**'
+      - '404.html'
+      - 'robots.txt'
+      - 'sitemap.xml'
+      - 'scripts/check_web_delivery.py'
+      - '.github/workflows/portal_visual_delivery_qa.yml'
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'student-hub.css'
+      - 'assets/**'
+      - '404.html'
+      - 'robots.txt'
+      - 'sitemap.xml'
+      - 'scripts/check_web_delivery.py'
+      - '.github/workflows/portal_visual_delivery_qa.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  visual-delivery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Validate web delivery assets
+        run: python scripts/check_web_delivery.py --output check-output/web-delivery.json
+      - name: Start local static server
+        run: |
+          python -m http.server 8000 --bind 127.0.0.1 > /tmp/sda211-http.log 2>&1 &
+          echo $! > /tmp/sda211-http.pid
+          for attempt in {1..20}; do
+            if curl --silent --fail http://127.0.0.1:8000/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/sda211-http.log
+          exit 1
+      - name: Verify delivered routes and assets
+        run: |
+          curl --fail --silent --show-error http://127.0.0.1:8000/ >/dev/null
+          curl --fail --silent --show-error http://127.0.0.1:8000/404.html >/dev/null
+          curl --fail --silent --show-error http://127.0.0.1:8000/robots.txt >/dev/null
+          curl --fail --silent --show-error http://127.0.0.1:8000/sitemap.xml >/dev/null
+          curl --fail --silent --show-error http://127.0.0.1:8000/assets/meaad-logo.png >/dev/null
+      - name: Capture responsive reference screenshots
+        run: |
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$BROWSER" ]; then echo 'No Chromium browser found on runner'; exit 1; fi
+          mkdir -p visual-evidence
+          "$BROWSER" --headless=new --no-sandbox --disable-gpu --hide-scrollbars --window-size=1366,900 --screenshot=visual-evidence/portal-1366.png http://127.0.0.1:8000/
+          "$BROWSER" --headless=new --no-sandbox --disable-gpu --hide-scrollbars --window-size=1024,900 --screenshot=visual-evidence/portal-1024.png http://127.0.0.1:8000/
+          "$BROWSER" --headless=new --no-sandbox --disable-gpu --hide-scrollbars --window-size=390,844 --screenshot=visual-evidence/portal-390.png http://127.0.0.1:8000/
+          file visual-evidence/*.png
+      - name: Upload visual and delivery evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: portal-visual-delivery-qa
+          path: |
+            check-output
+            visual-evidence
+          retention-days: 30
+          if-no-files-found: error
