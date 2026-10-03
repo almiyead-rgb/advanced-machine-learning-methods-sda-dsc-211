@@ -4,13 +4,15 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - develop/bilingual-v1.1.0
+      - main
+      - design/premium-course-overview
     paths:
       - 'index.html'
       - 'ar.html'
       - 'en.html'
-      - 'bilingual-v1.1.css'
       - 'student-hub.css'
+      - 'styles/**'
+      - 'assets/**'
       - 'README.md'
       - 'RELEASE_NOTES.md'
       - 'content/**'
@@ -24,8 +26,9 @@ on:
       - 'index.html'
       - 'ar.html'
       - 'en.html'
-      - 'bilingual-v1.1.css'
       - 'student-hub.css'
+      - 'styles/**'
+      - 'assets/**'
       - 'README.md'
       - 'RELEASE_NOTES.md'
       - 'content/**'
@@ -39,7 +42,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: $${{ github.workflow }}-$${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -47,10 +50,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           persist-credentials: ${{ github.event_name == 'push' }}
-      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
           python-version: '3.12'
       - name: Validate production portal
@@ -62,8 +65,8 @@ jobs:
           mkdir -p release check-output
           python scripts/build_portal_release_manifest.py --output release/portal_release_manifest.candidate.json
           cp release/portal_release_manifest.candidate.json check-output/portal_release_manifest.candidate.json
-      - name: Commit candidate manifest on the controlled development branch
-        if: github.event_name == 'push' && github.ref == 'refs/heads/develop/bilingual-v1.1.0'
+      - name: Commit candidate manifest on the controlled branch
+        if: github.event_name == 'push'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -76,7 +79,7 @@ jobs:
           fi
       - name: Upload portal release evidence
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: portal-release-candidate
           path: check-output

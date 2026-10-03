@@ -7,8 +7,9 @@ on:
       - 'index.html'
       - 'ar.html'
       - 'en.html'
-      - 'bilingual-v1.1.css'
       - 'student-hub.css'
+      - 'styles/**'
+      - 'assets/**'
       - 'scripts/check_portal.py'
       - '.github/workflows/portal_quality.yml'
   pull_request:
@@ -16,8 +17,9 @@ on:
       - 'index.html'
       - 'ar.html'
       - 'en.html'
-      - 'bilingual-v1.1.css'
       - 'student-hub.css'
+      - 'styles/**'
+      - 'assets/**'
       - 'scripts/check_portal.py'
       - '.github/workflows/portal_quality.yml'
 
@@ -25,7 +27,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: $${{ github.workflow }}-$${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -33,17 +35,17 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           persist-credentials: false
-      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
           python-version: '3.12'
-      - name: Validate bilingual unified student portal
+      - name: Validate premium bilingual production portal
         run: python scripts/check_portal.py --output check-output/portal-quality.json
       - name: Upload portal quality report
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: portal-quality
           path: check-output
