@@ -1,0 +1,66 @@
+name: Portal Release Candidate
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - develop/bilingual-v1.1.0
+    paths:
+      - 'index.html'
+      - 'ar.html'
+      - 'en.html'
+      - 'bilingual-v1.1.css'
+      - 'README.md'
+      - 'RELEASE_NOTES.md'
+      - 'content/**'
+      - 'scripts/check_portal.py'
+      - 'scripts/check_release_coordination.py'
+      - 'scripts/build_portal_release_manifest.py'
+      - 'release/portal_release_scope.json'
+      - '.github/workflows/portal_release_candidate.yml'
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'ar.html'
+      - 'en.html'
+      - 'bilingual-v1.1.css'
+      - 'README.md'
+      - 'RELEASE_NOTES.md'
+      - 'content/**'
+      - 'scripts/check_portal.py'
+      - 'scripts/check_release_coordination.py'
+      - 'scripts/build_portal_release_manifest.py'
+      - 'release/portal_release_scope.json'
+      - '.github/workflows/portal_release_candidate.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release-candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - name: Validate production portal
+        run: python scripts/check_portal.py --output check-output/portal-quality.json
+      - name: Validate portal and learner-template coordination
+        run: python scripts/check_release_coordination.py --output check-output/release-coordination.json
+      - name: Build deterministic candidate manifest
+        run: python scripts/build_portal_release_manifest.py --output check-output/portal_release_manifest.candidate.json
+      - name: Upload portal release evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: portal-release-candidate
+          path: check-output
+          retention-days: 30
