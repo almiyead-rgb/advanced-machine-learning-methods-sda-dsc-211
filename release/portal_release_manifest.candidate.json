@@ -3,17 +3,17 @@
   "release_version": "v1.1.0",
   "repository": "almiyead-rgb/advanced-machine-learning-methods-sda-dsc-211",
   "file_count": 20,
-  "aggregate_sha256": "b8c10df2cb4f9f5e8cc6d1ec13488fbd68cdc7d5184282a3fb479782edfdb291",
+  "aggregate_sha256": "affedf2ee446e1909920a337c91a9e4ef1da4ebc52c192205e48d39b2751fb64",
   "files": [
     {
       "path": ".github/workflows/portal_quality.yml",
-      "bytes": 1339,
-      "sha256": "8e8beb7228abc96c3f052878f4893a13f7db51dac212d4e2983c9015eba7fa2a"
+      "bytes": 1347,
+      "sha256": "28e9c2b59114dc092efad5c4ada2906792715b3af2f8ee53afc15da6f79abcde"
     },
     {
       "path": ".github/workflows/portal_release_candidate.yml",
-      "bytes": 2989,
-      "sha256": "654bd5032a5f5908e3085debd66909f5d579528d7e7ba3204fdbe8f3ac530923"
+      "bytes": 2946,
+      "sha256": "1d7aec9650327c8e297328bd42814abf2b0a43cc84a07bb204a1f002f09d369b"
     },
     {
       "path": "AUTHORS.md",
@@ -51,9 +51,9 @@
       "sha256": "40ccf0cde81de3cc4aab23dd50bc501b036f34c70a5c2fd4c60f79b9e7df1b3f"
     },
     {
-      "path": "bilingual-v1.1.css",
-      "bytes": 6379,
-      "sha256": "176148cb0967411452c73bcf5e51dcbc430b0ef01280378b5f7e6b8b158ab07c"
+      "path": "assets/meaad-logo.png",
+      "bytes": 6110,
+      "sha256": "6a5dbf6908e593d4016e6cbf67fafcd966dbd406a62098ea4dc6c06039b3e091"
     },
     {
       "path": "content/course_metadata.yml",
@@ -82,8 +82,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 23547,
-      "sha256": "a49b47e5a3cbc2933d611c0fc5af9729fba06e03df804c76299a2f8be97ae181"
+      "bytes": 20486,
+      "sha256": "290893aecc7250097746f6731c73b15df1640fb7e183c1d0639a29dc0bc935b6"
     },
     {
       "path": "scripts/build_portal_release_manifest.py",
@@ -92,18 +92,18 @@
     },
     {
       "path": "scripts/check_portal.py",
-      "bytes": 5774,
-      "sha256": "f7a5e25dc48fe98fc5bc8e8004339891df371435df21e70e5a3aa4ec92bd159a"
+      "bytes": 5963,
+      "sha256": "d9863675a67a5b7f455be1ac45ca00d6535f9e67a21a94c9853426b03624fbab"
     },
     {
       "path": "scripts/check_release_coordination.py",
-      "bytes": 3687,
-      "sha256": "34b1f72815530728ac6e10675ebf0b5237b0032f5dbd51e3dba61062998e86bd"
+      "bytes": 3817,
+      "sha256": "b72c23ba2d095948c724b03ffb8354b0264929527b9442afe8db2e183717f491"
     },
     {
       "path": "student-hub.css",
-      "bytes": 2484,
-      "sha256": "6b9cf96859c960c7d0b935b5c72e6f3d0eb7c3066810fe9f4486eda2b144a1ce"
+      "bytes": 14370,
+      "sha256": "c371cb98f360b5b1f6e0bb96c11f9d9b5b7f3538691181347c7cdeb2837ef802"
     }
   ],
   "notes": "Integrity inventory only; final tag and exact commit SHA are recorded separately."
