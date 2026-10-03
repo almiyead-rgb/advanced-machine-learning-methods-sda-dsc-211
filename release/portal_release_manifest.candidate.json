@@ -2,18 +2,18 @@
   "schema_version": 1,
   "release_version": "v1.1.0",
   "repository": "almiyead-rgb/advanced-machine-learning-methods-sda-dsc-211",
-  "file_count": 19,
-  "aggregate_sha256": "5976919d45bb9b587ca0535f30094baa68124283465752bd87adb4cf72aaad2c",
+  "file_count": 20,
+  "aggregate_sha256": "559215722b11031f13d516a7df284b7dd07b2d4714b9d111d3771a554a10d21a",
   "files": [
     {
       "path": ".github/workflows/portal_quality.yml",
-      "bytes": 1282,
-      "sha256": "97cf6af2b5fcc529f12b7c877f1d23c41986b3b0df2204cbef39b110815d7ef6"
+      "bytes": 1339,
+      "sha256": "8e8beb7228abc96c3f052878f4893a13f7db51dac212d4e2983c9015eba7fa2a"
     },
     {
       "path": ".github/workflows/portal_release_candidate.yml",
-      "bytes": 2937,
-      "sha256": "c5ae2a448cda062c39a8b491b7a5277f77af28b676adf02023504e31dacf62cd"
+      "bytes": 2989,
+      "sha256": "654bd5032a5f5908e3085debd66909f5d579528d7e7ba3204fdbe8f3ac530923"
     },
     {
       "path": "AUTHORS.md",
@@ -99,6 +99,11 @@
       "path": "scripts/check_release_coordination.py",
       "bytes": 2825,
       "sha256": "269752f5159375726f1171fe0d811eca270086af8d6a29c16bfcfdb4fed5ea80"
+    },
+    {
+      "path": "student-hub.css",
+      "bytes": 2484,
+      "sha256": "6b9cf96859c960c7d0b935b5c72e6f3d0eb7c3066810fe9f4486eda2b144a1ce"
     }
   ],
   "notes": "Integrity inventory only; final tag and exact commit SHA are recorded separately."
