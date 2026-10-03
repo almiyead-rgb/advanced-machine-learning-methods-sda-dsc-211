@@ -55,14 +55,12 @@ def main() -> int:
     parser.add_argument("--root", type=Path, default=Path.cwd())
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-
     root = args.root.resolve()
     index = root / "index.html"
     stylesheet = root / "student-hub.css"
     issues: list[str] = []
     html = index.read_text(encoding="utf-8") if index.is_file() else ""
     css = stylesheet.read_text(encoding="utf-8") if stylesheet.is_file() else ""
-
     if not html:
         issues.append("index.html is missing or empty")
     if not css:
@@ -70,17 +68,12 @@ def main() -> int:
 
     portal = PortalParser()
     portal.feed(html)
-
-    required_ids = {
-        "main", "overview", "start", "journey", "project",
-        "requirements", "assessment", "submission", "support", "architecture",
-    }
+    required_ids = {"main","overview","start","journey","project","requirements","assessment","submission","support","architecture"}
     missing_ids = sorted(required_ids - portal.ids)
     if missing_ids:
         issues.append(f"Missing required section ids: {missing_ids}")
 
-    required_assets = ["assets/meaad-logo.png", "student-hub.css"]
-    for relative in required_assets:
+    for relative in ["assets/meaad-logo.png", "student-hub.css"]:
         if not (root / relative).is_file():
             issues.append(f"Required portal asset is missing: {relative}")
 
@@ -90,12 +83,13 @@ def main() -> int:
         "SDA-DSC-211",
         "90",
         "10",
-        "Notebook 99",
+        "99_final_submission_check.ipynb",
+        "Submit privately",
         "Meaad Al-Marri",
-        "private cohort channel",
     ]
+    lower_html = html.lower()
     for signal in required_signals:
-        if signal.lower() not in html.lower():
+        if signal.lower() not in lower_html:
             issues.append(f"Required portal signal is missing: {signal}")
 
     if "assets/meaad-logo.png" not in portal.images:
