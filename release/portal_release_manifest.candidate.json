@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "release_version": "v1.1.0",
+  "repository": "almiyead-rgb/advanced-machine-learning-methods-sda-dsc-211",
+  "file_count": 17,
+  "aggregate_sha256": "e6e8e85e9c3f0cedb7c1e07392190d4405ad9b2cef3492f148c86e5b362af329",
+  "files": [
+    {
+      "path": ".github/workflows/portal_quality.yml",
+      "bytes": 1282,
+      "sha256": "97cf6af2b5fcc529f12b7c877f1d23c41986b3b0df2204cbef39b110815d7ef6"
+    },
+    {
+      "path": ".github/workflows/portal_release_candidate.yml",
+      "bytes": 2937,
+      "sha256": "c5ae2a448cda062c39a8b491b7a5277f77af28b676adf02023504e31dacf62cd"
+    },
+    {
+      "path": "AUTHORS.md",
+      "bytes": 108,
+      "sha256": "20f06e887bd4e0260c4b242da4d516436ce0913aff1f07a0991ec81d06549f43"
+    },
+    {
+      "path": "CITATION.cff",
+      "bytes": 334,
+      "sha256": "4e4bbcce6c0de6d3ca22363577f8b4d3152c8373b2114a2cd531a8a04d5851dd"
+    },
+    {
+      "path": "NOTICE.md",
+      "bytes": 1088,
+      "sha256": "ea20025a9905853142854b71aff8beb3a02924ded42086ae499c28d5a6445392"
+    },
+    {
+      "path": "README.md",
+      "bytes": 8800,
+      "sha256": "0ed226a8ab415ca845e50304b6ba4e8e53ea223737c2270600af57db0da965d5"
+    },
+    {
+      "path": "RELEASE_NOTES.md",
+      "bytes": 3354,
+      "sha256": "64caeb5a18dd1d9b81b565ed7733c032858dbcb86f7fa21525069677fe2af78b"
+    },
+    {
+      "path": "app.js",
+      "bytes": 3965,
+      "sha256": "fae22c5fc9771c0a8d83fc0bae8a6d2b040e7834e02142ee43c7eb9f888c86fd"
+    },
+    {
+      "path": "ar.html",
+      "bytes": 31851,
+      "sha256": "28985581fe0336b6c814fdde0facf952da49319e63f5beda5161b570f6efc1b5"
+    },
+    {
+      "path": "bilingual-v1.1.css",
+      "bytes": 6379,
+      "sha256": "176148cb0967411452c73bcf5e51dcbc430b0ef01280378b5f7e6b8b158ab07c"
+    },
+    {
+      "path": "docs/BILINGUAL_STYLE_GUIDE.md",
+      "bytes": 5391,
+      "sha256": "4658d6525aa86585f27dfe0875538be72a37aff49ce9ab61aea0abe33fe0404d"
+    },
+    {
+      "path": "docs/CONTENT_GOVERNANCE.md",
+      "bytes": 4682,
+      "sha256": "e669335aa9117412a80eccf0776fccadc6a6da5ce9f673e5f408bfcd0d397253"
+    },
+    {
+      "path": "en.html",
+      "bytes": 27685,
+      "sha256": "9ddd04fff7f2f82614b9673e54fafb0e9eddd440683f58572d996daa09365c31"
+    },
+    {
+      "path": "index.html",
+      "bytes": 14882,
+      "sha256": "fbee78243fa47e1d0371c12cc9c461f185cd865b277085ea8bc6107e532e56dd"
+    },
+    {
+      "path": "scripts/build_portal_release_manifest.py",
+      "bytes": 3282,
+      "sha256": "2df560bc393a1a6d44108ca684560d95146bef7513aad6c5ab72415006cb65d3"
+    },
+    {
+      "path": "scripts/check_portal.py",
+      "bytes": 4999,
+      "sha256": "14db4e940131767c6245348c370d3405da2762c43f1448f401a4c140f03c1784"
+    },
+    {
+      "path": "scripts/check_release_coordination.py",
+      "bytes": 2825,
+      "sha256": "269752f5159375726f1171fe0d811eca270086af8d6a29c16bfcfdb4fed5ea80"
+    }
+  ],
+  "notes": "Integrity inventory only; final tag and exact commit SHA are recorded separately."
+}
