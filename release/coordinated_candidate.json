@@ -6,8 +6,8 @@
     "repository": "almiyead-rgb/advanced-machine-learning-methods-sda-dsc-211",
     "branch": "develop/bilingual-v1.1.0",
     "manifest_path": "release/portal_release_manifest.candidate.json",
-    "file_count": 19,
-    "aggregate_sha256": "6bad2a8f253eff07b9821921a24bc3aa351b69f9b52e95df40a287488132c589"
+    "file_count": 20,
+    "aggregate_sha256": "5fd0aaa8e972f1e49346aee0818a05ed7a7fd037a248deec7e042832d16c2cbf"
   },
   "learner_template": {
     "repository": "almiyead-rgb/sda-dsc-211-student-template",
@@ -15,6 +15,12 @@
     "manifest_path": "release/release_manifest.candidate.json",
     "file_count": 127,
     "aggregate_sha256": "5e45aaf207fc67c605519e0fbdf8c67a9f67f5da42cc0954c0780544c3fc55c8"
+  },
+  "student_access_model": {
+    "single_public_entry": "https://almiyead-rgb.github.io/advanced-machine-learning-methods-sda-dsc-211/",
+    "legacy_routes_redirect": ["ar.html", "en.html"],
+    "private_controls_exposed": false,
+    "submission_route": "private cohort channel"
   },
   "manual_gates": [
     "HOSTED_COLAB_ACCEPTANCE",
@@ -25,5 +31,5 @@
     "FINAL_MANIFEST_GENERATION",
     "COORDINATED_MERGE_AND_PUBLICATION"
   ],
-  "notes": "The candidate manifests identify learner-facing release content. Operational coordination files are intentionally outside those manifest scopes. Final tags and exact merge commit SHAs are recorded only after all manual and private gates pass."
+  "notes": "The portal is the single public student gateway. Hidden evaluator assets, grades, receipts and identities remain private. Final tags and exact merge commit SHAs are recorded only after all manual and private gates pass."
 }
