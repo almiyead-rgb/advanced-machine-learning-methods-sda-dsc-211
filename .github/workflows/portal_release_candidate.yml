@@ -34,7 +34,7 @@ on:
       - '.github/workflows/portal_release_candidate.yml'
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -47,7 +47,7 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
-          persist-credentials: false
+          persist-credentials: ${{ github.event_name == 'push' }}
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.12'
@@ -56,7 +56,22 @@ jobs:
       - name: Validate portal and learner-template coordination
         run: python scripts/check_release_coordination.py --output check-output/release-coordination.json
       - name: Build deterministic candidate manifest
-        run: python scripts/build_portal_release_manifest.py --output check-output/portal_release_manifest.candidate.json
+        run: |
+          mkdir -p release check-output
+          python scripts/build_portal_release_manifest.py --output release/portal_release_manifest.candidate.json
+          cp release/portal_release_manifest.candidate.json check-output/portal_release_manifest.candidate.json
+      - name: Commit candidate manifest on the controlled development branch
+        if: github.event_name == 'push' && github.ref == 'refs/heads/develop/bilingual-v1.1.0'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add release/portal_release_manifest.candidate.json
+          if git diff --cached --quiet; then
+            echo 'Candidate manifest is already current.'
+          else
+            git commit -m 'Refresh portal release candidate manifest'
+            git push
+          fi
       - name: Upload portal release evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
