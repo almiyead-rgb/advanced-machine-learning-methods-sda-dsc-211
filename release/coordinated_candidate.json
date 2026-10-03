@@ -19,6 +19,14 @@
   "student_access_model": {
     "single_public_entry": "https://almiyead-rgb.github.io/advanced-machine-learning-methods-sda-dsc-211/",
     "legacy_routes_redirect": ["ar.html", "en.html"],
+    "resource_groups": [
+      "readiness",
+      "five_day_labs",
+      "project_templates",
+      "requirements_and_rubric",
+      "final_submission",
+      "support_library"
+    ],
     "private_controls_exposed": false,
     "submission_route": "private cohort channel"
   },
