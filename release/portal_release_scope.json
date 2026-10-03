@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "release_version": "v1.1.0",
+  "repository": "almiyead-rgb/advanced-machine-learning-methods-sda-dsc-211",
+  "include": [
+    "index.html",
+    "ar.html",
+    "en.html",
+    "bilingual-v1.1.css",
+    "app.js",
+    "README.md",
+    "NOTICE.md",
+    "AUTHORS.md",
+    "CITATION.cff",
+    "RELEASE_NOTES.md",
+    "content/**",
+    "docs/BILINGUAL_STYLE_GUIDE.md",
+    "docs/CONTENT_GOVERNANCE.md",
+    "scripts/check_portal.py",
+    "scripts/check_release_coordination.py",
+    "scripts/build_portal_release_manifest.py",
+    ".github/workflows/portal_quality.yml",
+    ".github/workflows/portal_release_candidate.yml"
+  ],
+  "exclude": [
+    "release/portal_release_manifest.json",
+    "check-output/**",
+    "prototype/**",
+    "**/__pycache__/**",
+    "**/*.pyc"
+  ],
+  "maximum_file_bytes": 10485760
+}
