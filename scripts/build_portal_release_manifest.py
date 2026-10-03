@@ -17,15 +17,24 @@ def read_json(path: Path) -> dict[str, Any]:
 
 
 def collect_files(root: Path, include: list[str], exclude: list[str]) -> list[Path]:
+    """Resolve files from file and directory globs without omitting nested content."""
     selected: dict[str, Path] = {}
+
+    def add_file(path: Path) -> None:
+        if not path.is_file():
+            return
+        relative = path.relative_to(root).as_posix()
+        if any(fnmatch.fnmatch(relative, item) for item in exclude):
+            return
+        selected[relative] = path
+
     for pattern in include:
         for path in root.glob(pattern):
-            if not path.is_file():
-                continue
-            relative = path.relative_to(root).as_posix()
-            if any(fnmatch.fnmatch(relative, item) for item in exclude):
-                continue
-            selected[relative] = path
+            if path.is_dir():
+                for child in path.rglob("*"):
+                    add_file(child)
+            else:
+                add_file(path)
     return [selected[key] for key in sorted(selected)]
 
 
