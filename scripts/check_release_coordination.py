@@ -49,9 +49,12 @@ def main() -> int:
         if item not in html:
             issues.append(f"Missing learner resource link: {item}")
 
-    for signal in ("90", "10"):
-        if signal not in html:
-            issues.append(f"Assessment signal missing: {signal}")
+    for signal in ("100", "70+", "Attendance", "الحضور", "شهادة اجتياز", "شهادة حضور"):
+        if signal.lower() not in lower_html:
+            issues.append(f"Assessment or certificate signal missing: {signal}")
+
+    if "90" in html and "Presentation" in html and "10" in html:
+        issues.append("Legacy 90+10 assessment model is still visible")
 
     private_en = any(signal in lower_html for signal in ("submit privately", "private cohort channel", "private submission"))
     private_ar = any(signal in html for signal in ("القناة الخاصة", "التسليم الخاص", "سلّم عبر القناة الخاصة"))
@@ -74,6 +77,7 @@ def main() -> int:
         "required_guides": GUIDES,
         "required_project_and_governance": PROJECT,
         "student_entry_model": "one public portal plus one student repository template",
+        "assessment_policy": "project 100 points plus attendance eligibility",
     }
     output = args.output if args.output.is_absolute() else root / args.output
     output.parent.mkdir(parents=True, exist_ok=True)
