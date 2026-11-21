@@ -3,7 +3,7 @@
   "release_version": "v1.1.0",
   "repository": "almiyead-rgb/advanced-machine-learning-methods-sda-dsc-211",
   "file_count": 25,
-  "aggregate_sha256": "fbe073019aebf69354e5e015a3396ebe300ee5ac4cf821c9c370775c7d506aaf",
+  "aggregate_sha256": "b879ae250b9f167863c281ae086e93552ef3d6ee3a0cea4119a6c95b3993a2ec",
   "files": [
     {
       "path": ".github/workflows/portal_quality.yml",
@@ -92,8 +92,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 20486,
-      "sha256": "290893aecc7250097746f6731c73b15df1640fb7e183c1d0639a29dc0bc935b6"
+      "bytes": 21036,
+      "sha256": "09307a4eed9ed733a6511ac4b69f74336bd41f74b1e61dca285232b34b74f284"
     },
     {
       "path": "robots.txt",
@@ -107,13 +107,13 @@
     },
     {
       "path": "scripts/check_portal.py",
-      "bytes": 5963,
-      "sha256": "d9863675a67a5b7f455be1ac45ca00d6535f9e67a21a94c9853426b03624fbab"
+      "bytes": 6214,
+      "sha256": "de6b640b217702f1b8675bf16851b780c81c0dcdf6ca6c777febc4b1dd029a71"
     },
     {
       "path": "scripts/check_release_coordination.py",
-      "bytes": 3817,
-      "sha256": "b72c23ba2d095948c724b03ffb8354b0264929527b9442afe8db2e183717f491"
+      "bytes": 4145,
+      "sha256": "f7adecfb893cc18395562ffeb4aabe4d97ea7430f7e53346c26319bb8bb5aca9"
     },
     {
       "path": "scripts/check_web_delivery.py",
