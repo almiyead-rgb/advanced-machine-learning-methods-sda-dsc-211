@@ -3,7 +3,7 @@
   "release_version": "v1.1.0",
   "repository": "almiyead-rgb/advanced-machine-learning-methods-sda-dsc-211",
   "file_count": 25,
-  "aggregate_sha256": "9827934e466f6f6c964968f0191fefe2b5c99fe0f703e6683c314b6c24529af2",
+  "aggregate_sha256": "ef337c3f1901728c64d235c62fdfd603e343d6169770970be24f98f87af63253",
   "files": [
     {
       "path": ".github/workflows/portal_quality.yml",
@@ -92,8 +92,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 19247,
-      "sha256": "bca8191dd38a85eabe78cda6ab410dfeb37a503b4bef6a667ff885607ae938c3"
+      "bytes": 23906,
+      "sha256": "2d5277aeb083bd4b083277483ebbedc7fe968a009668d7e1a3b9c51cd5b54ba9"
     },
     {
       "path": "robots.txt",
@@ -107,8 +107,8 @@
     },
     {
       "path": "scripts/check_portal.py",
-      "bytes": 6214,
-      "sha256": "de6b640b217702f1b8675bf16851b780c81c0dcdf6ca6c777febc4b1dd029a71"
+      "bytes": 7015,
+      "sha256": "5787535f0004387dee372ab0f27328ecde34266f7be6a0d01c3f836fbbcd4b1e"
     },
     {
       "path": "scripts/check_release_coordination.py",
@@ -127,8 +127,8 @@
     },
     {
       "path": "student-hub.css",
-      "bytes": 14370,
-      "sha256": "c371cb98f360b5b1f6e0bb96c11f9d9b5b7f3538691181347c7cdeb2837ef802"
+      "bytes": 15860,
+      "sha256": "d3a55f54303c7c3ba318266e268793f62a4ba17c3c38ddcd2e37029b9f035f60"
     }
   ],
   "notes": "Integrity inventory only; final tag and exact commit SHA are recorded separately."
