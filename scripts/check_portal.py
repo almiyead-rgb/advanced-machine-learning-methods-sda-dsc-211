@@ -81,8 +81,13 @@ def main() -> int:
         "Advanced Machine Learning Methods",
         "System Architecture",
         "SDA-DSC-211",
-        "90",
-        "10",
+        "100",
+        "70+",
+        "Attendance",
+        "الحضور",
+        "Completion certificate",
+        "شهادة اجتياز",
+        "شهادة حضور",
         "99_final_submission_check.ipynb",
         "Submit privately",
         "Meaad Al-Marri",
@@ -133,6 +138,7 @@ def main() -> int:
         "json_ld": portal.json_ld,
         "ltr_rtl_pairs_detected": len(portal.lang_dirs),
         "logo_path": "assets/meaad-logo.png",
+        "assessment_policy": "project scored out of 100; attendance controls certificate eligibility",
     }
     output = args.output if args.output.is_absolute() else root / args.output
     output.parent.mkdir(parents=True, exist_ok=True)
