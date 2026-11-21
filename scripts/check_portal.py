@@ -91,11 +91,23 @@ def main() -> int:
         "99_final_submission_check.ipynb",
         "Submit privately",
         "Meaad Al-Marri",
+        "فيديوهات اليوم | Day videos",
     ]
     lower_html = html.lower()
     for signal in required_signals:
         if signal.lower() not in lower_html:
             issues.append(f"Required portal signal is missing: {signal}")
+
+    video_dropdown_count = html.count('class="video-dropdown"')
+    youtube_link_count = html.count("youtube.com/watch?v=")
+    if video_dropdown_count != 5:
+        issues.append(f"Expected 5 daily video dropdowns, found {video_dropdown_count}")
+    if youtube_link_count != 10:
+        issues.append(f"Expected 10 verified YouTube links, found {youtube_link_count}")
+    for day in range(1, 6):
+        marker = f'class="day-card day-{day}"'
+        if marker not in html:
+            issues.append(f"Day {day} card is missing")
 
     if "assets/meaad-logo.png" not in portal.images:
         issues.append("The supplied MEAAD logo is not used in the page")
@@ -115,6 +127,8 @@ def main() -> int:
         issues.append("Reduced-motion support is missing")
     if "@media(max-width" not in css.replace(" ", ""):
         issues.append("Responsive breakpoints are missing")
+    if "Daily video dropdowns" not in css:
+        issues.append("Daily video dropdown styling is missing")
 
     missing_local: list[str] = []
     for href in portal.links + portal.images + portal.stylesheets:
@@ -138,6 +152,8 @@ def main() -> int:
         "json_ld": portal.json_ld,
         "ltr_rtl_pairs_detected": len(portal.lang_dirs),
         "logo_path": "assets/meaad-logo.png",
+        "daily_video_dropdowns": video_dropdown_count,
+        "verified_youtube_links": youtube_link_count,
         "assessment_policy": "project scored out of 100; attendance controls certificate eligibility",
     }
     output = args.output if args.output.is_absolute() else root / args.output
