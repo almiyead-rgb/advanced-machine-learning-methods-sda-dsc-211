@@ -1,4 +1,4 @@
-"""Validate that the premium portal links to the complete learner release."""
+"""Validate that the portal exposes the simplified daily learner journey."""
 from __future__ import annotations
 
 import argparse
@@ -15,17 +15,26 @@ NOTEBOOKS = [
     "99_final_submission_check.ipynb",
 ]
 GUIDES = [
-    "START_HERE.md", "READINESS_GUIDE.md", "DAY1_GUIDE.md", "DAY2_GUIDE.md",
-    "DAY3_GUIDE.md", "DAY4_GUIDE.md", "DAY5_GUIDE.md", "COLAB_GUIDE.md",
-    "GITHUB_GUIDE.md", "FAQ.md", "TROUBLESHOOTING.md", "LEARNING_RESOURCES.md",
-    "GLOSSARY.md",
+    "START_HERE.md",
+    "DAILY_LEARNING_PATH.md",
+    "EXPECTED_RESULTS.md",
+    "GITHUB_GUIDE.md",
+    "COLAB_GUIDE.md",
+    "SUBMISSION_GUIDE.md",
+    "FINAL_CHECK_GUIDE.md",
+    "TECHNICAL_REQUIREMENTS.md",
+    "ADMINISTRATIVE_REQUIREMENTS.md",
+    "RUBRIC.md",
+    "TROUBLESHOOTING.md",
 ]
-PROJECT = [
-    "data/DATA_GUIDE.md", "TECHNICAL_REQUIREMENTS.md", "ADMINISTRATIVE_REQUIREMENTS.md",
-    "COURSE_ALIGNMENT.md", "RUBRIC.md", "SUBMISSION_GUIDE.md", "FINAL_CHECK_GUIDE.md",
-    "reports/DECISION_CARD_TEMPLATE.md", "reports/INTERPRETABILITY_REPORT_TEMPLATE.md",
-    "reports/MODEL_CARD_TEMPLATE.md", "presentation/FINAL_PRESENTATION_TEMPLATE.md",
-    "presentation/FINAL_PRESENTATION_GUIDE.md",
+FORBIDDEN = [
+    "FINAL_PRESENTATION_TEMPLATE.md",
+    "FINAL_PRESENTATION_GUIDE.md",
+    "DECISION_CARD_TEMPLATE.md",
+    "INTERPRETABILITY_REPORT_TEMPLATE.md",
+    "MODEL_CARD_TEMPLATE.md",
+    "90</strong><span>Project",
+    "10</strong><span>Presentation",
 ]
 
 
@@ -41,32 +50,31 @@ def main() -> int:
     issues: list[str] = []
 
     if "almiyead-rgb/sda-dsc-211-student-template" not in html:
-        issues.append("Student-template repository link is missing")
-    if not ("github.com/new?template_name=sda-dsc-211-student-template" in lower_html or "/generate" in lower_html):
-        issues.append("Use-template creation link is missing")
+        issues.append("Student repository link is missing")
 
-    for item in NOTEBOOKS + GUIDES + PROJECT:
+    for item in NOTEBOOKS + GUIDES:
         if item not in html:
             issues.append(f"Missing learner resource link: {item}")
 
-    for signal in ("100", "70+", "Attendance", "الحضور", "شهادة اجتياز", "شهادة حضور"):
-        if signal.lower() not in lower_html:
-            issues.append(f"Assessment or certificate signal missing: {signal}")
+    required_signals = [
+        "100", "80", "20", "70+", "Attendance", "الحضور",
+        "Expected Results", "النتائج المتوقعة", "Daily Answer",
+        "سؤال", "Submit privately", "القناة الخاصة",
+        "System Architecture", "معمارية النظام",
+        "No mandatory presentation", "لا يوجد عرض إلزامي",
+    ]
+    for signal in required_signals:
+        if signal.casefold() not in html.casefold():
+            issues.append(f"Missing daily-learning signal: {signal}")
 
-    if "90" in html and "Presentation" in html and "10" in html:
-        issues.append("Legacy 90+10 assessment model is still visible")
-
-    private_en = any(signal in lower_html for signal in ("submit privately", "private cohort channel", "private submission"))
-    private_ar = any(signal in html for signal in ("القناة الخاصة", "التسليم الخاص", "سلّم عبر القناة الخاصة"))
-    if not private_en or not private_ar:
-        issues.append("Private submission route is not stated bilingually")
+    for signal in FORBIDDEN:
+        if signal.casefold() in lower_html:
+            issues.append(f"Obsolete template or assessment signal remains: {signal}")
 
     if "not an official SDAIA account" not in html or "ليست حسابًا رسميًا لسدايا" not in html:
         issues.append("Bilingual SDAIA disclaimer is missing")
     if "Meaad Al-Marri" not in html or "ميعاد المري" not in html:
         issues.append("Instructor attribution is missing")
-    if "System Architecture" not in html or "معمارية النظام" not in html:
-        issues.append("Bilingual system architecture is missing")
     if "v1.1.0" not in notes:
         issues.append("Release notes do not identify v1.1.0")
 
@@ -75,9 +83,8 @@ def main() -> int:
         "issues": issues,
         "required_notebooks": NOTEBOOKS,
         "required_guides": GUIDES,
-        "required_project_and_governance": PROJECT,
-        "student_entry_model": "one public portal plus one student repository template",
-        "assessment_policy": "project 100 points plus attendance eligibility",
+        "learner_model": "daily Colab lab + expected result + one answer + same-day GitHub upload",
+        "final_model": "one integrated project, Notebook 99, one formal grading cycle",
     }
     output = args.output if args.output.is_absolute() else root / args.output
     output.parent.mkdir(parents=True, exist_ok=True)
